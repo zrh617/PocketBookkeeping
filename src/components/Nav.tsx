@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import React from 'react';
+import Icon from './Icon';
 
 const NavWrapper = styled.nav`
   line-height: 24px;
@@ -10,7 +11,15 @@ const NavWrapper = styled.nav`
     > li{
       width: 33.3333%;
       text-align:center;
-      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      padding: 4px 0;
+      justify-content: center;
+      align-items: center;
+      .icon {
+        width: 24px;      
+        height: 24px;
+      }
     }
   }
 `;
@@ -20,12 +29,15 @@ const Nav = () => {
     <NavWrapper>
       <ul>
         <li>
+          <Icon name="tags" />
           <Link to="/tags">标签页</Link>
         </li>
         <li>
+          <Icon name="bookkeeping" />
           <Link to="/bookkeeping">记账页</Link>
         </li>
         <li>
+          <Icon name="statistics" />
           <Link to="/statistics">统计页</Link>
         </li>
       </ul>
