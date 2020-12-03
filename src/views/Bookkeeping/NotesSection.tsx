@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import React, {ChangeEventHandler, useRef} from 'react';
+import React, {ChangeEventHandler} from 'react';
 import {Input} from 'components/Input';
 
 const Notes = styled.section`
   background: #f5f5f5;
-  padding: 0 16px;
+  padding: 14px 16px;
   font-size: 14px;
 `;
 
@@ -19,7 +19,7 @@ const NotesSection: React.FC<Props> = (props) => {
   };
   return (
     <Notes>
-      <Input label="备注" type="text" value={note} onChange={onChange} />
+      <Input label="备注" placeholder="请填写备注" type="text" value={note} onChange={onChange} />
     </Notes>
   );
 };
