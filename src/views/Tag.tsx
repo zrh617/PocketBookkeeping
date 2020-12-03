@@ -46,11 +46,14 @@ const Tag: React.FC = () => {
       </Center>
     </div>
   );
+  const onClickBack = () => {
+
+  }
   // @ts-ignore
   return (
     <Layout>
       <Topbar>
-        <Icon name="left"/>
+        <Icon name="left" onClick={onClickBack}/>
         <span>编辑标签</span>
         <Icon/>
       </Topbar>
