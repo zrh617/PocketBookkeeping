@@ -1,5 +1,5 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import {useTags} from '../useTags';
 import Layout from 'components/Layout';
 import Icon from 'components/Icon';
@@ -46,9 +46,10 @@ const Tag: React.FC = () => {
       </Center>
     </div>
   );
+  const history = useHistory()
   const onClickBack = () => {
-
-  }
+    history.goBack();
+  };
   // @ts-ignore
   return (
     <Layout>
