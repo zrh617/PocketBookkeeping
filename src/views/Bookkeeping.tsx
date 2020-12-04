@@ -21,6 +21,10 @@ const defaultFormData = {
   amount: 0
 };
 
+const CategoryWrapper = styled.div`
+  background:#c4c4c4;
+`;
+
 function Bookkeeping() {
   const [selected, setSelected] = useState(defaultFormData);
   const {addRecord} = useRecords();
@@ -28,7 +32,7 @@ function Bookkeeping() {
     setSelected({...selected, ...obj});
   };
   const submit = () => {
-    if(addRecord(selected)){
+    if (addRecord(selected)) {
       alert('保存成功');
       setSelected(defaultFormData);
     }
@@ -39,8 +43,10 @@ function Bookkeeping() {
                    onChange={tagIds => onChange({tagIds})}/>
       <NotesSection value={selected.note}
                     onChange={note => onChange({note})}/>
-      <CategorySection value={selected.category}
-                       onChange={category => onChange({category})}/>
+      <CategoryWrapper>
+        <CategorySection value={selected.category}
+                         onChange={category => onChange({category})}/>
+      </CategoryWrapper>
       <NumberPadSection value={selected.amount}
                         onChange={amount => onChange({amount})}
                         onOk={submit}/>
