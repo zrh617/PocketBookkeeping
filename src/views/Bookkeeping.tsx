@@ -5,6 +5,7 @@ import {CategorySection} from './Bookkeeping/CategorySection';
 import {NotesSection} from './Bookkeeping/NotesSection';
 import {NumberPadSection} from './Bookkeeping/NumberPadSection';
 import {TagsSection} from './Bookkeeping/TagsSection';
+import {useRecords} from 'hooks/useRecords';
 
 const MyLayout = styled(Layout)`
   display:flex;
@@ -13,15 +14,23 @@ const MyLayout = styled(Layout)`
 
 type Category = '-' | '+'
 
+const defaultFormData = {
+  tagIds: [] as number[],
+  note: '',
+  category: '-' as Category,
+  amount: 0
+};
+
 function Bookkeeping() {
-  const [selected, setSelected] = useState({
-    tagIds: [] as number[],
-    note: '',
-    category: '-' as Category,
-    amount: 0
-  });
+  const [selected, setSelected] = useState(defaultFormData);
+  const {addRecord} = useRecords();
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({...selected, ...obj});
+  };
+  const submit = () => {
+    addRecord(selected);
+    alert('保存成功');
+    setSelected(defaultFormData);
   };
   return (
     <MyLayout>
@@ -33,7 +42,7 @@ function Bookkeeping() {
                        onChange={category => onChange({category})}/>
       <NumberPadSection value={selected.amount}
                         onChange={amount => onChange({amount})}
-                        onOk={() => {}}/>
+                        onOk={submit}/>
     </MyLayout>
   );
 }
