@@ -16,6 +16,7 @@ type Category = '-' | '+'
 
 const defaultFormData = {
   tagIds: [] as number[],
+  createAt: new Date().toISOString(),
   note: '',
   category: '-' as Category,
   amount: 0
@@ -41,8 +42,11 @@ function Bookkeeping() {
     <MyLayout scrollTop={9999}>
       <TagsSection value={selected.tagIds}
                    onChange={tagIds => onChange({tagIds})}/>
-      <NotesSection value={selected.note}
-                    onChange={note => onChange({note})}/>
+      <NotesSection createAt = {selected.createAt}
+                    value={selected.note}
+                    onChange={note => onChange({note})}
+                    onChangeCreateAt={createAt => onChange({createAt})}
+      />
       <CategoryWrapper>
         <CategorySection value={selected.category}
                          onChange={category => onChange({category})}/>
