@@ -8,7 +8,8 @@ export type RecordItem = {
   amount: number,
   createdAt: string  //ISO 8601
 }
-type newRecordItem = Omit<RecordItem, 'createdAt'>
+// type newRecordItem = Omit<RecordItem, 'createdAt'>
+type newRecordItem = RecordItem
 
 export const useRecords = () => {
   const [records, setRecords] = useState<RecordItem[]>([]);
@@ -30,7 +31,8 @@ export const useRecords = () => {
       alert('请选择标签');
       return false;
     }
-    const record = {...newRecord, createdAt: (new Date()).toISOString()};
+    console.log(newRecord)
+    const record = {...newRecord, createdAt: newRecord.createdAt};
     setRecords([...records, record]);
     return true;
   };

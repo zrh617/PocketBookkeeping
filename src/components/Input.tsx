@@ -8,12 +8,11 @@ const Label = styled.label`
     >input{
       display: block; 
       width: 100%;
-      height: 44px;
+      padding: 10px;
       background: none;
       border: none;
     }
 `;
-
 type Props = {
   label: string,
   type?: string
