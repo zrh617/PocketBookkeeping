@@ -8,12 +8,11 @@ export type RecordItem = {
   amount: number,
   createdAt: string  //ISO 8601
 }
-// type newRecordItem = Omit<RecordItem, 'createdAt'>
+// type newRecordItem = Omit<RecordItem, 'createdAt'> //合并RecordItem所有属性除了createdAt
 type newRecordItem = RecordItem
 
 export const useRecords = () => {
   const [records, setRecords] = useState<RecordItem[]>([]);
-
   useEffect(() => {
     setRecords(JSON.parse(window.localStorage.getItem('records') || '[]'));
   }, []);
@@ -31,7 +30,6 @@ export const useRecords = () => {
       alert('请选择标签');
       return false;
     }
-    console.log(newRecord)
     const record = {...newRecord, createdAt: newRecord.createdAt};
     setRecords([...records, record]);
     return true;
