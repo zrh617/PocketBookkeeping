@@ -55,6 +55,12 @@ const Nav = () => {
             统计页
           </NavLink>
         </li>
+        <li>
+          <NavLink to="/charts" activeClassName="selected">
+            <Icon name="charts"/>
+            图表页
+          </NavLink>
+        </li>
       </ul>
     </NavWrapper>
   );

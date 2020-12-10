@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import Bookkeeping from './views/Bookkeeping';
 import Statistics from './views/Statistics';
+import Charts from './views/Charts';
 import Tags from './views/Tags';
 import NoMatch from './views/NoMatch';
 import styled from 'styled-components';
@@ -33,6 +34,9 @@ function App() {
           </Route>
           <Route exact path="/statistics">
             <Statistics/>
+          </Route>
+          <Route exact path="/charts">
+            <Charts/>
           </Route>
           <Redirect exact from="/" to="/bookkeeping"/>
           <Route path="*">

@@ -5,7 +5,7 @@ export type RecordItem = {
   tagIds: number[]
   note: string
   category: '+' | '-'
-  amount: number,
+  amount: number
   createdAt: string  //ISO 8601
 }
 // type newRecordItem = Omit<RecordItem, 'createdAt'> //合并RecordItem所有属性除了createdAt

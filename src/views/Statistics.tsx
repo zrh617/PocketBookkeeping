@@ -33,7 +33,7 @@ const Content = styled.h4`
   margin-top: 10px;
 `;
 
-function Statistics() {
+function Statistics(this: any) {
   const [category, setCategory] = useState<'-' | '+'>('-');
   const {records} = useRecords();
   const {getName} = useTags();
@@ -83,6 +83,7 @@ function Statistics() {
     )
   );
   return (
+    <div>
     <Layout>
       <CategoryWrapper>
         <CategorySection value={category}
@@ -90,8 +91,8 @@ function Statistics() {
       </CategoryWrapper>
       {array.length !== 0 ? findItem(array) : <Content>当前没有数据，点击记账页面开始记账吧</Content>}
     </Layout>
+    </div>
   );
 }
-
 
 export default Statistics;
