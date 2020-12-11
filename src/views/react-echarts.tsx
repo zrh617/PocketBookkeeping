@@ -1,16 +1,20 @@
 import React, {useRef, useEffect} from "react";
 import * as echarts from 'echarts';
+import styled from 'styled-components';
 
+const Content = styled.div`
+`
 export function ReactEcharts(props: any) {
   const {option, loading} = props;
   const container = useRef(null);
   const chart = useRef(null);
   useEffect(() => {
     const width = document.documentElement.clientWidth;
+    const height = document.documentElement.clientHeight;
     // @ts-ignore
-    container.current.style.width = `${width - 20}px`;
+    container.current.style.width = `${(width - 20) * 4.2}px`;
     // @ts-ignore
-    container.current.style.height = `${(width - 20) * 1.2}px`;
+    container.current.style.height = `${height}px`;
     // @ts-ignore
     chart.current = echarts.init(container.current, 'dark');
   }, []);
@@ -28,8 +32,8 @@ export function ReactEcharts(props: any) {
     }
   }, [loading]);
   return (
-    <div>
+    <Content>
       <div ref={container}/>
-    </div>
+    </Content>
   );
 }

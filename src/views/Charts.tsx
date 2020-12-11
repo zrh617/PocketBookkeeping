@@ -1,12 +1,13 @@
 import React from 'react';
 import {ReactMain} from './react-main';
+import Layout from 'components/Layout';
 
 function Charts() {
   return (
-    <div>
+    <Layout>
       <ReactMain/>
       <div id="root"/>
-    </div>
+    </Layout>
   );
 }
 
