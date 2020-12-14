@@ -1,14 +1,13 @@
 import React from 'react';
-import {ReactMain} from './react-main';
 import Layout from 'components/Layout';
+import {ReactApp} from './react-app';
 
-function Charts() {
+const Charts: React.FC = () => {
   return (
     <Layout>
-      <ReactMain/>
-      <div id="root"/>
+      <ReactApp/>
     </Layout>
   );
-}
+};
 
 export default Charts;

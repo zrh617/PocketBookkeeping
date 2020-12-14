@@ -1,12 +1,9 @@
-import React, {useRef, useState} from "react";
+import React, {useState} from "react";
 import {ReactEcharts} from './react-echarts';
 import 'echarts/lib/component/tooltip';
-import {EChartOption} from 'echarts';
 
-export function ReactApp() {
-  const xData = useRef(['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']);
-  const values = useRef([820, 932, 901, 934, 1290, 1330, 1320]);
-  const [option, setOption] = useState({
+export const ReactApp = () => {
+  const [option] = useState({
     title: {
       text: '堆叠区域图'
     },
@@ -28,10 +25,10 @@ export function ReactApp() {
       }
     },
     grid: {
-      left: '3%',
-      right: '4%',
-      bottom: '3%',
-      containLabel: true
+      left: '4%',
+      right: '2%',
+      bottom: '4%',
+      containLabel: false
     },
     xAxis: [
       {
@@ -89,26 +86,10 @@ export function ReactApp() {
       }
     ]
   });
-  const [loading, setLoading] = useState(false);
-  const onClick = () => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      // @ts-ignore
-      setOption<EChartOption>({
-        xAxis: {
-          data: [...xData.current, 'new']
-        },
-        series: [{
-          data: [...values.current, 1100]
-        }]
-      });
-    }, 3000);
-  };
+  const width = document.documentElement.clientWidth;
   return (
     <div>
-      <ReactEcharts option={option} loading={loading}/>
-      {/*<button onClick={onClick}>点击加载更多</button>*/}
+      <ReactEcharts option={option} scrollLeft={(width - 20) * 4.2}/>
     </div>
   );
-}
+};

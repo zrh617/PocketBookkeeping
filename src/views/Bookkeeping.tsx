@@ -38,8 +38,9 @@ function Bookkeeping() {
       setSelected(defaultFormData);
     }
   };
+  const height = document.documentElement.clientHeight;
   return (
-    <MyLayout scrollTop={9999}>
+    <MyLayout scrollTop={height}>
       <TagsSection value={selected.tagIds}
                    onChange={tagIds => onChange({tagIds})}/>
       <NotesSection createdAt = {selected.createdAt}
