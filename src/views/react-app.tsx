@@ -27,7 +27,7 @@ export const ReactApp = () => {
     grid: {
       left: '4%',
       right: '2%',
-      bottom: '4%',
+      bottom: '5%',
       containLabel: false
     },
     xAxis: [

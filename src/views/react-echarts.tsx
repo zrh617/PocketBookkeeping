@@ -1,11 +1,16 @@
 import React, {useRef, useEffect} from "react";
 import * as echarts from 'echarts';
+import styled from 'styled-components';
 
+const Main = styled.div`
+  flex-grow: 1;
+  overflow: auto;
+`;
 type Props = {
   option: any
   scrollLeft?: number
 }
-export const ReactEcharts: React.FC<Props> = (props: any) => {
+export const ReactEcharts: React.FC<Props> = (props) => {
   const {option} = props;
   const container = useRef(null);
   const chart = useRef(null);
@@ -18,7 +23,7 @@ export const ReactEcharts: React.FC<Props> = (props: any) => {
     // @ts-ignore
     container.current.style.height = `${height - 56}px`;
     // @ts-ignore
-    chart.current = echarts.init(container.current, 'light');
+    chart.current = echarts.init(container.current,'light');
   }, []);
   useEffect(() => {
     // @ts-ignore
@@ -26,11 +31,11 @@ export const ReactEcharts: React.FC<Props> = (props: any) => {
   }, [option]);
   useEffect(() => {
     if (!chartWrapper.current) {return;}
-    chartWrapper.current.scrollLeft = props.scrollLeft;
+    chartWrapper.current.scrollLeft = props.scrollLeft!;
   }, [props.scrollLeft]);
   return (
-    <div ref={chartWrapper}>
+    <Main ref={chartWrapper}>
       <div ref={container}/>
-    </div>
+    </Main>
   );
 };
