@@ -48,6 +48,7 @@
     "jest-circus": "26.6.0",
     "jest-resolve": "26.6.0",
     "jest-watch-typeahead": "0.6.1",
+    "lodash": "^4.17.20",
     "mini-css-extract-plugin": "0.11.3",
     "node-sass": "npm:dart-sass",
     "optimize-css-assets-webpack-plugin": "5.0.4",
@@ -109,6 +110,7 @@
   "devDependencies": {
     "@types/classnames": "^2.2.11",
     "@types/echarts": "^4.9.2",
+    "@types/lodash": "^4.14.165",
     "@types/react-router-dom": "^5.1.6",
     "@types/styled-components": "^5.1.4",
     "@types/webpack-env": "^1.16.0"

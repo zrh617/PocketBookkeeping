@@ -11,7 +11,9 @@ type Props = {
   scrollLeft?: number
 }
 export const ReactEcharts: React.FC<Props> = (props) => {
+  console.log(props);
   const {option} = props;
+  console.log(option);
   const container = useRef(null);
   const chart = useRef(null);
   const chartWrapper = useRef<HTMLDivElement>(null);
@@ -23,7 +25,7 @@ export const ReactEcharts: React.FC<Props> = (props) => {
     // @ts-ignore
     container.current.style.height = `${height - 56}px`;
     // @ts-ignore
-    chart.current = echarts.init(container.current,'light');
+    chart.current = echarts.init(container.current, 'light');
   }, []);
   useEffect(() => {
     // @ts-ignore
