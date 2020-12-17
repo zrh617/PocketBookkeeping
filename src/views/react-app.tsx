@@ -28,11 +28,8 @@ export const ReactApp = () => {
       return -1;
     }
   });
-  console.log(array);
   const keys = array.map(item => item.date);
   const values = array.map(item => item.value);
-  console.log(keys);
-  console.log(values);
   const [option] = useState({
     title: {
       text: '收入支出图'
@@ -64,7 +61,13 @@ export const ReactApp = () => {
       {
         type: 'category',
         boundaryGap: false,
-        data: keys
+        data: keys,
+        axisLabel: {
+          // 使用函数模板，函数参数分别为刻度数值（类目），刻度的索引
+          formatter: function (value: string, index: number) {
+            return value.substr(5)
+          }
+        }
       }
     ],
     yAxis: [
