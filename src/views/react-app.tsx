@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {ReactEcharts} from './react-echarts';
 import 'echarts/lib/component/tooltip';
 import {useRecords} from '../hooks/useRecords';
@@ -30,7 +30,7 @@ export const ReactApp = () => {
   });
   const keys = array.map(item => item.date);
   const values = array.map(item => item.value);
-  const [option] = useState({
+  const option = {
     title: {
       text: '收入支出图'
     },
@@ -84,7 +84,7 @@ export const ReactApp = () => {
         data: values
       }
     ]
-  });
+  };
   const width = document.documentElement.clientWidth;
   return (
     <div>

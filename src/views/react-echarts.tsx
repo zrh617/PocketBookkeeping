@@ -11,9 +11,7 @@ type Props = {
   scrollLeft?: number
 }
 export const ReactEcharts: React.FC<Props> = (props) => {
-  console.log(props);
   const {option} = props;
-  console.log(option);
   const container = useRef(null);
   const chart = useRef(null);
   const chartWrapper = useRef<HTMLDivElement>(null);
