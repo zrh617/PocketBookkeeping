@@ -94,14 +94,13 @@ export const ReactApp = () => {
       {
         name: '支出',
         type: 'line',
-        stack: '总量',
-        data: expendValues,
-        lineStyle: 'red'
+        stack: '支出',
+        data: expendValues
       },
       {
         name: '收入',
         type: 'line',
-        stack: '总量',
+        stack: '收入',
         data: incomeValues
       }
     ]
