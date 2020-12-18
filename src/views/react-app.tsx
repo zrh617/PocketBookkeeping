@@ -7,44 +7,58 @@ import day from 'dayjs';
 
 export const ReactApp = () => {
   const {records} = useRecords();
+  const width = document.documentElement.clientWidth;
   const today = new Date();
-  const array: { date: string; value: number; }[] = [];
+  const expendArray: { date: string; value: number; }[] = [];
+  const incomeArray: { date: string; value: number; }[] = [];
   for (let i = 0; i <= 29; i++) {
     const date = day(today)
       .subtract(i, 'day').format('YYYY-MM-DD');
-    const found = _.find(records, {
-      createdAt: date
+    const foundExpend = _.find(records, {
+      createdAt: date,
+      category: '-'
     })?.amount;
-    array.push({
-      date: date, value: found ? found : 0
+    const foundIncome = _.find(records, {
+      createdAt: date,
+      category: '+'
+    })?.amount;
+    expendArray.push({
+      date: date, value: foundExpend ? foundExpend : 0
+    });
+    incomeArray.push({
+      date: date, value: foundIncome ? foundIncome : 0
     });
   }
-  array.sort((a, b) => {
-    if (a.date > b.date) {
-      return 1;
-    } else if (a.date === b.date) {
-      return 0;
-    } else {
-      return -1;
-    }
-  });
-  const keys = array.map(item => item.date);
-  const values = array.map(item => item.value);
+  const dateSort = (variable: { date: string; value: number }[]) => {
+    // @ts-ignore
+    variable.sort((a: { date: number; }, b: { date: number; }) => {
+      if (a.date > b.date) {
+        return 1;
+      } else if (a.date === b.date) {
+        return 0;
+      } else {
+        return -1;
+      }
+    });
+  }
+  dateSort(expendArray)
+  dateSort(incomeArray)
+  const keys = incomeArray.map(item => item.date);
+  const expendValues = expendArray.map(item => item.value);
+  console.log('expendValues');
+  console.log(expendValues);
+  const incomeValues = incomeArray.map(item => item.value);
+  console.log('incomeValues');
+  console.log(incomeValues);
   const option = {
     title: {
       text: '收入支出图'
     },
     tooltip: {
       trigger: 'axis',
-      axisPointer: {
-        type: 'cross',
-        label: {
-          backgroundColor: '#6a7985'
-        }
-      }
     },
     legend: {
-      data: ['总和']
+      data: ['支出','收入']
     },
     toolbox: {
       feature: {
@@ -52,10 +66,10 @@ export const ReactApp = () => {
       }
     },
     grid: {
-      left: '4%',
-      right: '2%',
-      bottom: '5%',
-      containLabel: false
+      left: '3%',
+      right: '4%',
+      bottom: '3%',
+      containLabel: true
     },
     xAxis: [
       {
@@ -73,19 +87,25 @@ export const ReactApp = () => {
     yAxis: [
       {
         type: 'value',
-        show: false
+        position: 'right'
       }
     ],
     series: [
       {
-        name: '总和',
+        name: '支出',
         type: 'line',
         stack: '总量',
-        data: values
+        data: expendValues,
+        lineStyle: 'red'
+      },
+      {
+        name: '收入',
+        type: 'line',
+        stack: '总量',
+        data: incomeValues
       }
     ]
   };
-  const width = document.documentElement.clientWidth;
   return (
     <div>
       <ReactEcharts option={option} scrollLeft={(width - 20) * 4.2}/>
