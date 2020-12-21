@@ -33,7 +33,6 @@ function Bookkeeping() {
     setSelected({...selected, ...obj});
   };
   const submit = () => {
-    console.log(selected);
     if (addRecord(selected)) {
       alert('保存成功');
       setSelected(defaultFormData);

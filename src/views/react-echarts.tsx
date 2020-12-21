@@ -23,7 +23,7 @@ export const ReactEcharts: React.FC<Props> = (props) => {
     // @ts-ignore
     container.current.style.height = `${height - 56}px`;
     // @ts-ignore
-    chart.current = echarts.init(container.current, 'light');
+    chart.current = echarts.init(container.current, 'dark');
   }, []);
   useEffect(() => {
     // @ts-ignore

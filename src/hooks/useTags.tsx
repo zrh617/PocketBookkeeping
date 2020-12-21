@@ -1,6 +1,7 @@
 import {useEffect, useState} from 'react';
 import {createId} from 'lib/createId';
 import {useUpdate} from './useUpdate';
+import {useHistory} from 'react-router-dom';
 
 const useTags = () => {
   const [tags, setTags] = useState<{ id: number, name: string }[]>([]);
@@ -30,11 +31,16 @@ const useTags = () => {
     }
     return result;
   };
+  const history = useHistory()
+  const onClickBack = () => {
+    history.goBack();
+  };
   const updateTag = (id: number, {name}: { name: string }) => {
     setTags(tags.map(tag => tag.id === id ? {id, name} : tag));
   };
   const deleteTag = (id: number) => {
     setTags(tags.filter(tag => tag.id !== id));
+    onClickBack()
   };
   const addTag = () => {
     const tagName = window.prompt('新标签的名称为');
