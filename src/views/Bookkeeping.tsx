@@ -16,7 +16,7 @@ type Category = '-' | '+'
 
 const defaultFormData = {
   tagIds: [] as number[],
-  createdAt: new Date().toISOString(),
+  createdAt: new Date(+new Date()+8*3600*1000).toISOString().replace(/T/g, ' ').replace(/\.[\d]{3}Z/, '').split(' ')[0],
   note: '',
   category: '-' as Category,
   amount: 0
@@ -33,6 +33,7 @@ function Bookkeeping() {
     setSelected({...selected, ...obj});
   };
   const submit = () => {
+    console.log(selected);
     if (addRecord(selected)) {
       alert('保存成功');
       setSelected(defaultFormData);

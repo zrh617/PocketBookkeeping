@@ -45,11 +45,7 @@ export const ReactApp = () => {
   dateSort(incomeArray)
   const keys = incomeArray.map(item => item.date);
   const expendValues = expendArray.map(item => item.value);
-  console.log('expendValues');
-  console.log(expendValues);
   const incomeValues = incomeArray.map(item => item.value);
-  console.log('incomeValues');
-  console.log(incomeValues);
   const option = {
     title: {
       text: '收入支出图'
