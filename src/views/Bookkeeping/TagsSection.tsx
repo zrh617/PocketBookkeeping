@@ -27,7 +27,7 @@ type Props = {
   onChange: (selected: number[]) => void;
 }
 const TagsSection: React.FC<Props> = (props) => {
-  const {tags, addTag} = useTags();
+  const {tags} = useTags();
   const selectedTagIds = props.value;
   const onToggleTag = (tagId: number) => {
     const index = selectedTagIds.indexOf(tagId);
@@ -41,7 +41,6 @@ const TagsSection: React.FC<Props> = (props) => {
   const getClass = (tagId: number) => selectedTagIds.indexOf(tagId) >= 0 ? 'selected' : '';
   return (
     <Tags>
-      <button onClick={addTag}>新增标签</button>
       <ol>
         {tags.map(tag =>
           <li key={tag.id} onClick={() => {onToggleTag(tag.id);}

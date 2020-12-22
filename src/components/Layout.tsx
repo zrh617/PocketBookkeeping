@@ -1,6 +1,7 @@
 import Nav from './Nav';
 import React, {useEffect, useRef} from 'react';
 import styled from 'styled-components';
+import {Header} from './Header';
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -26,6 +27,7 @@ const Layout: React.FC<Props> = (props) => {
   }, [props.scrollTop]);
   return (
     <Wrapper>
+      <Header/>
       <Main ref={mainRef} className={props.className}>
         {props.children}
       </Main>

@@ -21,9 +21,9 @@ export const ReactEcharts: React.FC<Props> = (props) => {
     // @ts-ignore
     container.current.style.width = `${(width - 20) * 4.2}px`!;
     // @ts-ignore
-    container.current.style.height = `${height - 56}px`;
+    container.current.style.height = `${height - 116}px`;
     // @ts-ignore
-    chart.current = echarts.init(container.current, 'dark');
+    chart.current = echarts.init(container.current, 'light');
   }, []);
   useEffect(() => {
     // @ts-ignore

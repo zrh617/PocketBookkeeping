@@ -25,10 +25,21 @@ const InputWrapper = styled.div`
   padding: 0 16px;
   margin-top: 8px;
 `;
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  >button{
+    margin: 0 10px;
+  }
+`;
 const Tag: React.FC = () => {
   const {findTag, updateTag, deleteTag} = useTags();
   let {id: idString} = useParams<Params>();
   const tag = findTag(parseInt(idString));
+  const history = useHistory()
+  const onClickBack = () => {
+    history.goBack();
+  };
   const tagContent = (tag: { id: number; name: string }) => (
     <div>
       <InputWrapper>
@@ -40,17 +51,13 @@ const Tag: React.FC = () => {
       </InputWrapper>
       <Center>
         <Space/>
-        <Space/>
-        <Space/>
-        <Button onClick={() => deleteTag(tag.id)}>删除标签</Button>
+        <ButtonWrapper>
+          <Button onClick={() => onClickBack()}>保存</Button>
+          <Button onClick={() => deleteTag(tag.id)}>删除标签</Button>
+        </ButtonWrapper>
       </Center>
     </div>
   );
-  const history = useHistory()
-  const onClickBack = () => {
-    history.goBack();
-  };
-  // @ts-ignore
   return (
     <Layout>
       <Topbar>

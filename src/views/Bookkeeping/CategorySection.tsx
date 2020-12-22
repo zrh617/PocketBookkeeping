@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import React, {useState} from 'react';
 
 const Category = styled.section`
+background:cadetblue;
 font-size: 24px;
+line-height: 16px;
   >ul{
     display: flex;
     >li{
@@ -17,8 +19,9 @@ font-size: 24px;
         background:#333;
         position:absolute;
         bottom: 0;
-        width: 100%;
-        left: 0;
+        width: 50px;
+        left: 50%;
+        margin-left: -25px;
       }
     }
   }

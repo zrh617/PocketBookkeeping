@@ -12,6 +12,12 @@ const Label = styled.label`
       background: none;
       border: none;
     }
+    >div{
+      display: block; 
+      width: 100%;
+      padding: 10px;
+      text-align: right;
+    }
 `;
 type Props = {
   label: string,
@@ -27,4 +33,4 @@ const Input: React.FC<Props> = (props) => {
   );
 };
 
-export {Input};
+export {Label,Input};

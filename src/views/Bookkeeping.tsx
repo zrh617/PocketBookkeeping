@@ -23,7 +23,7 @@ const defaultFormData = {
 };
 
 const CategoryWrapper = styled.div`
-  background:#c4c4c4;
+  background:cadetblue;
 `;
 
 function Bookkeeping() {
@@ -41,6 +41,10 @@ function Bookkeeping() {
   const height = document.documentElement.clientHeight;
   return (
     <MyLayout scrollTop={height}>
+      <CategoryWrapper>
+        <CategorySection value={selected.category}
+                         onChange={category => onChange({category})}/>
+      </CategoryWrapper>
       <TagsSection value={selected.tagIds}
                    onChange={tagIds => onChange({tagIds})}/>
       <NotesSection createdAt = {selected.createdAt}
@@ -48,10 +52,6 @@ function Bookkeeping() {
                     onChange={note => onChange({note})}
                     onChangeCreatedAt={createdAt => onChange({createdAt})}
       />
-      <CategoryWrapper>
-        <CategorySection value={selected.category}
-                         onChange={category => onChange({category})}/>
-      </CategoryWrapper>
       <NumberPadSection value={selected.amount}
                         onChange={amount => onChange({amount})}
                         onOk={submit}/>

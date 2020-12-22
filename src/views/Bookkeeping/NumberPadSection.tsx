@@ -1,6 +1,12 @@
 import React, {useState} from 'react';
 import {NumberPad} from './NumberPadSection/NumberPad';
 import {generateOutput} from './NumberPadSection/generateOutput';
+import { Label } from 'components/Input';
+import styled from 'styled-components';
+
+const Output = styled.div`
+  padding: 0 16px;
+`
 
 type Props = {
   value: number;
@@ -34,7 +40,13 @@ const NumberPadSection: React.FC<Props> = (props) => {
   };
   return (
     <NumberPad>
-      <div className="output">{output}</div>
+      {/*<div className="output">{output}</div>*/}
+      <Output>
+        <Label>
+          <span>金额</span>
+          <div>{output}</div>
+        </Label>
+      </Output>
       <div className="pad clearfix" onClick={onClickButtonWrapper}>
         <button>1</button>
         <button>2</button>
